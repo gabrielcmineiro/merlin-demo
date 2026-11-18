@@ -1,0 +1,120 @@
+/* Merlin · o que é próprio do produto. Tudo sai dos tokens do GLA Design System 2.7.1 (css/app.css).
+   Nada aqui muda uma peça do sistema; só acrescenta as que o produto pede. */
+
+/* Quem está vendo: direção ou operação */
+.m-papel{margin-right:4px}
+@media(max-width:900px){.m-papel{display:none}}
+
+/* Leitura do Merlin: uma por conjunto de gráficos */
+.m-leitura .gla-leitura{font-size:19px;max-width:30ch}
+.m-leitura .gla-nota-dado{line-height:1.5}
+
+/* Mapa dos 12 grupos */
+.m-mapa{display:grid;grid-template-columns:minmax(120px,170px) repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
+.m-mapa .m-cab{padding:0 4px 4px;font-size:13px;color:var(--gla-muted);align-self:end}
+.m-mapa .m-cab b{display:block;font-size:14px;font-weight:600;color:var(--gla-text)}
+.m-mapa .m-lin{padding:14px 8px 0 0;font-size:13px;color:var(--gla-muted)}
+.m-mapa .m-lin b{display:block;font-size:15px;font-weight:600;color:var(--gla-text)}
+.m-cel{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:118px;padding:14px 16px;border:1px solid var(--app-borda);border-radius:var(--r-peca);background:var(--gla-bg);color:var(--gla-text);font:inherit;text-align:left;cursor:pointer;box-shadow:var(--sombra-1);transition:transform 160ms var(--ease-saida),box-shadow 160ms var(--ease-saida)}
+.m-cel b{font-size:28px;font-weight:300;letter-spacing:-.02em;line-height:1.1}
+.m-cel span{font-size:13px;color:var(--gla-muted);font-variant-numeric:tabular-nums}
+.m-cel em{margin-top:auto;padding-top:10px;font-style:normal;font-size:13px;font-weight:500;color:var(--gla-text)}
+.m-cel[data-alerta]{background:var(--gla-coral);border-color:var(--gla-ink);color:var(--gla-ink)}
+.m-cel[data-alerta] span,.m-cel[data-alerta] em{color:var(--gla-ink)}
+.m-cel[data-peso]{background:var(--app-realce)}
+.m-cel:active{transform:scale(.98)}
+@media(hover:hover) and (pointer:fine){.m-cel:hover{transform:translateY(-2px);box-shadow:var(--sombra-2)}}
+@media(max-width:900px){
+  .m-mapa{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .m-mapa .m-cab{display:none}
+  .m-mapa .m-lin{grid-column:1/-1;padding:10px 0 0}
+  .m-cel::before{content:attr(data-faixa);font-size:12px;color:inherit;opacity:.8}
+}
+
+/* Opções em cartão (objetivo, oferta) */
+.m-opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.m-opcoes button{display:flex;flex-direction:column;gap:2px;padding:12px 14px;min-height:64px;border:1px solid var(--gla-control-line);border-radius:var(--r-peca);background:var(--gla-bg);color:var(--gla-text);font:inherit;font-size:14px;text-align:left;cursor:pointer}
+.m-opcoes button b{font-weight:600}
+.m-opcoes button span{font-size:13px;color:var(--gla-muted)}
+.m-opcoes button[aria-pressed=true]{background:var(--gla-text);border-color:var(--gla-text);color:var(--gla-bg)}
+.m-opcoes button[aria-pressed=true] span{color:inherit;opacity:.8}
+
+/* Variável dentro do texto da mensagem */
+.m-var{display:inline-block;padding:0 6px;border-radius:6px;background:var(--app-realce);border:1px solid var(--app-borda);font-size:13px;font-weight:500;white-space:nowrap}
+.m-vars{display:flex;flex-wrap:wrap;gap:8px}
+.m-vars button{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border:1px solid var(--app-borda);border-radius:999px;background:var(--gla-bg);color:var(--gla-text);font:inherit;font-size:13px;cursor:pointer}
+
+/* Prévia no celular */
+.m-fone{width:min(100%,320px);margin:0 auto;padding:14px 12px 16px;border:1px solid var(--gla-control-line);border-radius:28px;background:var(--app-chao)}
+.m-fone header{padding:2px 8px 10px;margin-bottom:12px;border-bottom:1px solid var(--gla-line);font-size:13px;font-weight:600}
+.m-fone header small{display:block;font-size:12px;font-weight:400;color:var(--gla-muted)}
+.m-fone p{padding:12px 14px;border-radius:4px 14px 14px 14px;background:var(--gla-bg);font-size:14px;line-height:1.5;box-shadow:var(--sombra-1);overflow-wrap:anywhere}
+.m-fone span{display:block;margin-top:6px;padding:9px;border-radius:10px;background:var(--gla-bg);font-size:13px;font-weight:600;text-align:center}
+
+/* Editor de e-mail */
+.m-editor{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--app-gap);align-items:start}
+.m-blocos{display:flex;flex-direction:column;gap:8px}
+.m-blocos h3{font-size:13px;font-weight:600;margin:6px 0 2px}
+.m-blocos button{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--app-borda);border-radius:var(--r-ctrl);background:var(--gla-bg);color:var(--gla-text);font:inherit;font-size:14px;text-align:left;cursor:grab;box-shadow:var(--sombra-1)}
+.m-paineis{display:grid;gap:14px}
+.m-paineis[data-modo=visual] .m-codigo,.m-paineis[data-modo=html] .m-email{display:none}
+.m-email{padding:26px 28px 20px;border:1px solid var(--app-borda);border-radius:var(--r-peca);background:#fff;color:#1a1a1a;font-size:14px;line-height:1.55}
+.m-email .m-logo{padding-bottom:14px;border-bottom:1px solid #d6d8cd;font-family:var(--gla-font-label);font-size:14px;letter-spacing:.14em;text-align:center}
+.m-email .m-img{display:flex;align-items:center;justify-content:center;gap:8px;height:140px;margin:16px 0;border:1px dashed #696e5f;border-radius:12px;background:#f5f5f0;color:#484b43;font-size:13px}
+.m-email .m-sel{outline:2px solid #1a1a1a;outline-offset:6px;border-radius:4px}
+.m-email h4{font-size:22px;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin:0}
+.m-email h4+p{margin-top:8px;color:#484b43}
+.m-email .m-cta{display:inline-block;margin-top:16px;padding:10px 18px;border-radius:999px;background:#1a1a1a;color:#f5f5f0;font-weight:600}
+.m-email footer{margin-top:18px;padding-top:12px;border-top:1px solid #d6d8cd;font-size:12px;color:#616557;text-align:center}
+.m-codigo{margin:0;padding:16px 18px;border-radius:var(--r-peca);background:#1a1a1a;color:#f5f5f0;font:12.5px/1.65 var(--gla-font-code);white-space:pre-wrap;overflow-wrap:anywhere}
+.m-codigo .t{color:#ead095}.m-codigo .c{color:#909583}
+@media(max-width:900px){.m-editor{grid-template-columns:1fr}.m-blocos{flex-direction:row;flex-wrap:wrap}.m-blocos h3{width:100%}}
+
+/* Números curtos lado a lado (recebem, controle, fora) */
+.m-contas{display:flex;flex-wrap:wrap;gap:12px 28px;margin:0}
+.m-contas div{display:flex;flex-direction:column}
+.m-contas dt{font-size:12px;color:var(--gla-muted)}
+.m-contas dd{margin:0;font-size:22px;font-weight:400;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+
+/* Campanha no quadro e no registro */
+.m-num{font-family:var(--gla-font-label);font-size:11px;letter-spacing:.06em;color:var(--gla-muted)}
+.m-resumo{display:grid;gap:18px}
+.m-resumo>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding-top:18px;border-top:1px solid var(--gla-line)}
+.m-resumo>div:first-child{border-top:0;padding-top:0}
+.m-resumo h4{font-size:14px;font-weight:600;margin:0}
+.m-resumo p{font-size:14px;line-height:1.5;max-width:62ch}
+.m-resumo p+p{margin-top:6px;color:var(--gla-muted);font-size:13px}
+@media(max-width:640px){.m-resumo>div{grid-template-columns:1fr;gap:6px}}
+
+.m-pe-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px}
+[hidden]{display:none!important}
+
+/* O quadro da operação tem cinco etapas e cabe sem rolar no computador */
+.m-quadro5{grid-auto-columns:minmax(190px,1fr)}
+.m-quadro5 .gla-cartao-item strong a{color:inherit}
+
+/* Links de texto com alvo de toque suficiente */
+.m-pe-acoes>a:not(.gla-button),.m-resumo h4 a{display:inline-flex;align-items:center;min-height:28px}
+.m-quadro5 .gla-cartao-item strong a{display:inline-block;padding:5px 0}
+
+/* No celular, o selo do cartão desce para a linha de baixo e o título não espreme */
+@media(max-width:640px){.gla-card-topo{flex-wrap:wrap}.gla-card-topo>div{flex:1 1 60%;min-width:0}}
+
+/* ---------- depois da revisão da Vera (18/11) ---------- */
+/* O que o analista mudou em relação à proposta do Merlin */
+.m-mudou{margin-left:8px;vertical-align:middle}
+.m-resumo h4{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+/* Imagem do e-mail: botão enquanto falta, confirmação depois */
+button.m-img{width:100%;font:inherit;cursor:pointer}
+.m-email .m-img--ok{height:auto;padding:14px;border-style:solid;justify-content:flex-start}
+/* No escuro, a barra de apoio do gráfico precisa de 3:1 contra o cartão */
+.gla-root[data-theme=dark]{--d-apoio:#8a8d80}
+/* Trilho fechado no celular sai da ordem do teclado */
+@media(max-width:1023px){.gla-app:not([data-rail-aberto]) .gla-rail{visibility:hidden}}
+/* No celular: a gaveta empilha os botões e o quadro vira lista por etapa */
+@media(max-width:640px){
+  .gla-gaveta-pe{flex-wrap:wrap}
+  .gla-gaveta-pe>.gla-button{flex:1 1 100%;justify-content:center}
+  .m-quadro5{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow:visible}
+  .m-pe-acoes>.gla-button{flex:1 1 100%;justify-content:center}
+}

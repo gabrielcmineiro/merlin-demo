@@ -1,0 +1,32 @@
+/* GLA Design System 2.0 · destaques decididos na folha de estilo (03/11/2026)
+   B1 itálico (.gla-em, já em gla.css), B2 traço de caneta firme, B3 círculo de caneta, rabisco com ponto de luz.
+   Regras: um destaque por bloco; nunca dois recursos na mesma palavra; traço de 2 a 4 palavras; círculo em 1. */
+
+/* B2.1 traço firme: a marca da promessa. Uma passada, sobe de leve, grossa onde a caneta pousa. */
+.gla-traco{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 16%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M3.5 10.6 C 1.8 9.8, 2.6 7.9, 5 7.8 C 80 7.2, 180 5.9, 296.5 4.4 C 298.6 4.3, 299 5.3, 297.2 5.8 C 200 9.2, 90 11.4, 6.2 11.9 C 5 12, 4.1 11.5, 3.5 10.6 Z%22 fill=%22%23ff6f61%22/%3E%3C/svg%3E") no-repeat left 100%/100% .36em;padding-bottom:.2em;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* O traço não quebra de linha (2 a 4 palavras cabem). No celular estreito, pode quebrar para não estourar a tela. */
+@media (max-width:600px){.gla-traco{white-space:normal}}
+/* B2.2 duplo: só na promessa principal da página */
+.gla-traco--duplo{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 24%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M3.5 8.6 C 1.8 7.8, 2.6 5.9, 5 5.8 C 80 5.2, 180 3.9, 296.5 2.4 C 298.6 2.3, 299 3.3, 297.2 3.8 C 200 7.2, 90 9.4, 6.2 9.9 C 5 10, 4.1 9.5, 3.5 8.6 Z%22 fill=%22%23ff6f61%22/%3E%3Cpath d=%22M40 17.8 C 38.6 17.1, 39.2 15.4, 41.2 15.3 C 100 14.6, 160 13.7, 222 12.6 C 223.8 12.6, 224 13.5, 222.6 13.9 C 160 16.4, 100 18.4, 42.4 19.2 C 41.4 19.3, 40.5 18.7, 40 17.8 Z%22 fill=%22%23ff6f61%22/%3E%3C/svg%3E");background-size:100% .52em;padding-bottom:.32em}
+/* B2.3 mais pesado: título grande e capa de reel */
+.gla-traco--pesado{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 16%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M3.2 11.6 C 1.2 10.4, 2 7, 5.4 6.8 C 80 6.2, 180 4.8, 296 3.2 C 299 3.1, 299.4 4.8, 297 5.6 C 200 9.8, 90 12.6, 6.6 13.4 C 5 13.6, 3.8 12.8, 3.2 11.6 Z%22 fill=%22%23ff6f61%22/%3E%3C/svg%3E");background-size:100% .42em}
+
+/* B3 círculo de caneta: a marca do problema, em uma palavra só */
+.gla-circulo{position:relative;display:inline-block;isolation:isolate}
+.gla-circulo::after{content:"";position:absolute;left:-.32em;right:-.38em;top:-.12em;bottom:-.2em;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 160 60%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M28 12 C 70 2, 150 6, 152 28 C 154 50, 90 58, 46 54 C 12 51, 2 34, 12 22 C 20 12, 48 8, 70 9%22 fill=%22none%22 stroke=%22%23ff6f61%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") no-repeat center/100% 100%;pointer-events:none;z-index:-1}
+
+/* Rabisco com ponto de luz (vetor de assets/svg/rabisco.svg, colado inline com class="gla-rabisco") */
+.gla-rabisco{display:block;width:100%;max-width:420px;height:auto}
+/* O rabisco se desenha uma vez e fica: é o único momento de movimento da peça. gla-rabisco--loop repete (só em tela de espera). */
+.gla-rabisco path{stroke:currentColor;stroke-dasharray:1 1;stroke-dashoffset:1;animation:gla-desenha 4.5s cubic-bezier(.55,0,.25,1) 1 forwards}
+.gla-rabisco circle{transform-box:fill-box;transform-origin:center;opacity:0;animation:gla-ponto 4.5s cubic-bezier(.2,.8,.2,1) 1 forwards}
+.gla-rabisco--loop path{animation:gla-desenha-loop 7s cubic-bezier(.55,0,.25,1) infinite}
+.gla-rabisco--loop circle{animation:gla-ponto-loop 7s cubic-bezier(.2,.8,.2,1) infinite}
+.gla-rabisco--parado path{animation:none;stroke-dashoffset:0}
+.gla-rabisco--parado circle{animation:none;opacity:1}
+@keyframes gla-desenha{0%{stroke-dashoffset:1}75%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes gla-ponto{0%,72%{transform:scale(.4);opacity:0}82%{transform:scale(1.25);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes gla-desenha-loop{0%{stroke-dashoffset:1;opacity:1}52%{stroke-dashoffset:0;opacity:1}88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes gla-ponto-loop{0%,50%{transform:scale(.4);opacity:0}56%{transform:scale(1.25);opacity:1}62%,88%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.gla-rabisco path{animation:none;stroke-dashoffset:0}.gla-rabisco circle{animation:none;opacity:1}}
+@media print{.gla-rabisco path{animation:none;stroke-dashoffset:0}.gla-rabisco circle{animation:none;opacity:1}}
