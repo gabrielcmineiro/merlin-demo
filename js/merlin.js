@@ -53,6 +53,15 @@
   });
   $$('[data-m-reinicia]').forEach((b) => b.addEventListener('click', () => { try { localStorage.removeItem(CHAVE); } catch {} location.href = 'index.html'; }));
 
+  if (window.iniciarCampanha) iniciarCampanha(rasc, dados.estado, salvar);
+  $$('[data-resumo-campanha]').forEach(el => {
+    const key = el.dataset.resumoCampanha;
+    if (rasc[key]) el.textContent = rasc[key];
+    if (key === 'canais' && Array.isArray(rasc.canais)) el.textContent = rasc.canais.join(' · ') || 'Escolher canais';
+  });
+  const ficha = document.querySelector('[data-m-chave="c08"] .gla-principal');
+  if (ficha && est('c08') !== 'rascunho') ficha.href = 'campanha-revisao.html';
+
   // ----- Números que dependem do tamanho do controle -----
   const ELEGIVEIS = 218, POR_EMAIL = 5;
   const contas = () => { const pct = Number(rasc.pct || 20), c = Math.floor(ELEGIVEIS * pct / 100), r = ELEGIVEIS - c; return { pct, controle: c, recebem: r, whats: r - POR_EMAIL }; };
